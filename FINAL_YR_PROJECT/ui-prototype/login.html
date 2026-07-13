@@ -1,54 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GovAssist AI - Login</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-  <style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}</style>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GovAssist AI - Secure Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#002114",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-surface": "#213145",
+                        "on-error-container": "#93000a",
+                        "background": "#f8f9ff",
+                        "on-tertiary-container": "#3980f4",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#85f8c4",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary": "#000000",
+                        "primary-container": "#131b2e",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#82f5c1",
+                        "on-secondary-container": "#00714e",
+                        "surface": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "secondary": "#006c4a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d3e4fe",
+                        "outline-variant": "#c6c6cd",
+                        "on-surface": "#0b1c30",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-container": "#7c839b",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005137",
+                        "outline": "#76777d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container": "#e5eeff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-container": "#001a42",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "xl": "40px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .shadow-soft {
+            box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+        }
+        .shadow-card {
+            box-shadow: 0px 10px 30px rgba(15, 23, 42, 0.08);
+        }
+        .input-glow:focus-within {
+            box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1);
+        }
+        
+        /* Loading spinner animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin 1.5s linear infinite;
+        }
+        
+        /* Toast animation */
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .toast-enter {
+            animation: slideInUp 0.3s ease-out forwards;
+        }
+    </style>
 </head>
-<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center">
-  <main class="w-full max-w-md p-8">
-    <div class="mb-8 text-center">
-      <h1 class="text-2xl font-semibold">Welcome back</h1>
-      <p class="text-sm text-on-surface-variant">Sign in to access your GovAssist AI dashboard</p>
-    </div>
-
-    <form class="space-y-4">
-      <div>
-        <label class="block text-sm font-medium mb-1">Email</label>
-        <input type="email" placeholder="you@example.com" class="w-full rounded border px-3 py-2" />
-      </div>
-      <div>
-        <label class="block text-sm font-medium mb-1">Password</label>
-        <div class="relative">
-          <input type="password" placeholder="••••••••" class="w-full rounded border px-3 py-2 pr-10" />
-          <button type="button" class="absolute right-2 top-2 text-sm text-gray-500">Show</button>
-        </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <label class="flex items-center gap-2 text-sm"><input type="checkbox"/> Remember me</label>
-        <a href="#" class="text-sm text-primary">Forgot?</a>
-      </div>
-      <div>
-        <button type="button" class="w-full bg-[#0F172A] text-white py-2 rounded">Sign In</button>
-      </div>
-      <div class="flex items-center gap-3">
-        <div class="flex-grow border-t"></div>
-        <div class="text-sm text-on-surface-variant">OR</div>
-        <div class="flex-grow border-t"></div>
-      </div>
-      <div>
-        <button type="button" class="w-full border rounded py-2 flex items-center justify-center gap-2">
-          <img src="https://www.gstatic.com/devrel-devsite/prod/v2b2f0e5a6e7f4b6e0a2c3f0b6a7b8c9d/google_g_logo.png" alt="Google" class="w-5 h-5"/>
-          Continue with Google
-        </button>
-      </div>
-    </form>
-
-    <p class="mt-6 text-center text-sm text-on-surface-variant">Don't have an account? <a href="register.html" class="text-primary">Create one</a></p>
-  </main>
-</body>
-</html>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col relative overflow-x-hidden selection:bg-surface-dim selection:text-primary">
+<!-- Top Navigation (Minimalist for Auth) -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto md:px-xl px-md">
+<!-- Brand -->
+<div class="flex items-center gap-sm">
+<img alt="GovAssist AI Logo" class="h-10 w-10 object-contain rounded-full shadow-sm" data-alt="A clean, modern logo for GovAssist AI featuring a stylized shield and circuit nodes in slate blue and emerald green" src="https://lh3.googleusercontent.com/aida/AP1WRLuxa0z_VP1PS5-zUL7aOHFwr3y2FONQ8e_jSEufKPWxZRuoHZE8tGeYtW8f3rHMpahL6OfTbOoAHqwOdVLsRlM2MIkT0o0X3SAuhsskE0biAmoc9rfBo4SCNsUi_8Dxx_nDHYAUrAcWc6dF_4k-UbRY_Xk4zZgQ3BORBYi1bUO3dV2tu0MSVpZwRQhUbsleE--aRZ56pO-5R1dKrxE_-bRU4-Jbjn470THnGQP30JZrW6spdm2dZ2BQ3Q4"/>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">GovAssist AI</span>
+</div>
+<!-- Nav Links -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Back to Landing Page
+                </a>
+</nav>
+<!-- Mobile Menu Toggle (Visual only for this scope) -->
+<button class="md:hidden text-on-surface-variant p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center pt-20 pb-xl px-md sm:px-lg md:px-xl">
+<!-- Two Column Layout Container -->
+<div class="max-w-container-max w-full grid grid-cols-1 lg:grid-cols-2 gap-xl lg:gap-24 items-center mt-lg lg:mt-xl">
+<!-- Left Column: Illustration & Welcome (Hidden on small mobile, visible on md+) -->
+<div class="hidden md:flex flex-col justify-center items-start pr-lg">
+<div class="mb-lg relative w-full max-w-[500px] aspect-[4/3] rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center p-lg">
+<!-- Abstract background element for depth -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-variant/50 to-transparent"></div>
+<img alt="Secure Access Illustration" class="w-full h-full object-contain relative z-10 drop-shadow-xl" data-alt="An isometric 3D illustration showing a friendly, advanced AI robot in slate blue securely handing a glowing green digital key to a citizen standing in front of a modern government building, symbolizing secure access." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6FkSgKnDeJ2f7lSKPgOwMJgd5OM49KgrIhxe0zWgk2eWhqQFD3bcI86rDmxb4DJ417sYuqLZe5Udhg4SnyGV183ZbNMZkEctR4Xlxt2LOG2Q0uOhOh6tEFowh1p42uWiWrs1P33V6lH-QzE1rpclM8uOpzGoHrujoB1gIb_Eudxp12J4cnfaFRUKdvm0XL42V3-1VH4C9jKFYKod3Jl5rbdqFTBPE4VzX86hhRn_TNK0jvgcYNgPtB3MJKtcC6Z9vV87tDr0cnM-Q"/>
+</div>
+<h1 class="font-display text-headline-lg lg:text-display text-primary mb-md">Welcome Back!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Sign in to access your personalized government scheme recommendations and track your applications securely.</p>
+<!-- Trust Indicators -->
+<div class="mt-xl grid grid-cols-1 sm:grid-cols-3 gap-md w-full max-w-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Secure Login</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">enhanced_encryption</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Encrypted</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">shield_person</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Protected</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Login Card -->
+<div class="w-full max-w-md mx-auto lg:ml-auto">
+<div class="glass-panel rounded-xl shadow-card p-lg sm:p-xl border border-surface-variant relative overflow-hidden">
+<!-- Decorative subtle top border -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+<!-- Mobile Welcome Text (Only visible when illustration is hidden) -->
+<div class="md:hidden text-center mb-xl">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-xs">Welcome Back</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Secure access to your benefits.</p>
+</div>
+<div class="hidden md:block mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Login</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Secure access to your government benefits.</p>
+</div>
+<form class="flex flex-col gap-md">
+<!-- Email / Mobile Field -->
+<div class="flex flex-col gap-xs relative">
+<label class="font-label-md text-label-md text-on-surface" for="email">Email or Mobile Number</label>
+<div class="relative flex items-center input-glow rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant/70 text-[20px]">mail</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-error text-on-surface rounded-lg focus:outline-none focus:border-error focus:ring-1 focus:ring-error transition-colors font-body-md text-body-md" id="email" placeholder="Enter your email or mobile" type="text" value="invalid-email-example"/>
+</div>
+<!-- Error State Example -->
+<p class="font-label-sm text-label-sm text-error flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                Invalid email format. Please check and try again.
+                            </p>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs mt-2 relative">
+<label class="font-label-md text-label-md text-on-surface" for="password">Password</label>
+<div class="relative flex items-center input-glow rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant/70 text-[20px]">lock</span>
+<input class="w-full pl-10 pr-10 py-3 bg-surface-container-lowest border border-error text-on-surface rounded-lg focus:outline-none focus:border-error focus:ring-1 focus:ring-error transition-colors font-body-md text-body-md" id="password" placeholder="Enter your password" type="password" value="wrongpassword"/>
+<button class="absolute right-3 text-on-surface-variant/70 hover:text-on-surface transition-colors focus:outline-none flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+<!-- Error State Example -->
+<p class="font-label-sm text-label-sm text-error flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                Incorrect password.
+                            </p>
+</div>
+<!-- Remember & Forgot -->
+<div class="flex items-center justify-between mt-sm">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative flex items-center justify-center w-4 h-4">
+<input class="peer appearance-none w-4 h-4 border border-outline-variant rounded-[4px] checked:bg-primary checked:border-primary transition-all focus:outline-none focus:ring-2 focus:ring-primary/20 bg-surface-container-lowest" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-[12px] text-on-primary opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Remember Me</span>
+</label>
+<a class="font-label-sm text-label-sm text-primary hover:text-secondary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<!-- Primary Actions -->
+<div class="mt-md flex flex-col gap-3">
+<!-- Standard Login Button -->
+<button class="w-full bg-[#0F172A] hover:bg-[#0F172A]/90 text-white font-label-md text-label-md py-3 px-4 rounded-lg shadow-sm transition-all duration-200 flex justify-center items-center gap-2" type="button">
+                                Login
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Loading State Variant (For demonstration) -->
+<button class="w-full bg-[#0F172A]/70 text-white/80 font-label-md text-label-md py-3 px-4 rounded-lg cursor-not-allowed flex justify-center items-center gap-2 mt-2" disabled="" type="button">
+<span class="material-symbols-outlined animate-spin-slow text-[18px]">progress_activity</span>
+                                Authenticating...
+                            </button>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-3 my-md">
+<div class="h-[1px] flex-grow bg-outline-variant/50"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/70 uppercase tracking-wider">Or</span>
+<div class="h-[1px] flex-grow bg-outline-variant/50"></div>
+</div>
+<!-- Social Login -->
+<button class="w-full bg-surface-container-lowest border border-outline-variant/50 hover:bg-surface-container-low text-on-surface font-label-md text-label-md py-3 px-4 rounded-lg transition-all duration-200 flex justify-center items-center gap-3 shadow-sm" type="button">
+<!-- Placeholder for Google Logo -->
+<svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                            Continue with Google
+                        </button>
+</form>
+<!-- Footer Link inside Card -->
+<div class="mt-xl text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Don't have an account? 
+                            <a class="font-label-md text-label-md text-primary hover:text-secondary hover:underline transition-all" href="#">Register here</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Toast (Example State) -->
+<div class="fixed bottom-lg right-lg z-50 toast-enter hidden" id="success-toast">
+<div class="bg-[#059669] text-white px-md py-3 rounded-lg shadow-card flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md">Login Successful</span>
+<span class="font-body-sm text-body-sm text-white/80 text-xs">Redirecting to your dashboard...</span>
+</div>
+</div>
+</div>
+<!-- Minimal Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-lg mt-auto">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col sm:flex-row justify-between items-center gap-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant/70 text-center sm:text-left">
+                © 2024 GovAssist AI. An official digital transformation initiative.
+            </p>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms &amp; Conditions</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple script to demonstrate toast appearance (for interactive feel if needed)
+        // Uncomment to see it in action on load
+        /*
+        setTimeout(() => {
+            document.getElementById('success-toast').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('success-toast').classList.add('hidden');
+            }, 3000);
+        }, 1000);
+        */
+    </script>
+</body></html>
